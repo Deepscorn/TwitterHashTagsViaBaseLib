@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">#bot</string>
+
+    <string name="twitter">#Twitter</string>
+    <string name="dribbble">#Dribbble</string>
+    <string name="android">#Android</string>
+    <string name="new_tweets">New tweets</string>
+
+    <string name="about_us">About us</string>
+    <string name="touch_instinct">Touch Instinct</string>
+    <string name="we_are_the_best">Нам не стыдно за выпускаемые продукты, все они сделаны с вниманием к деталям. Пользователи это ценят, многие наши приложения попадают в топы AppStore и получают высокие оценки.\n\nМы любим своих заказчиков и решаем их задачи. На письма и телефон отвечаем быстро, по праздникам и выходным, делаем работу в срок и никуда не пропадаем.\nЗакажите разработку сейчас!</string>
+    <string name="tweets">Tweets</string>
+    <string name="cell_phone">tel:+79312286770</string>
+    <string name="order">Ordering an application</string>
+    <string name="email">hello@touchin.ru</string>
+
+</resources>

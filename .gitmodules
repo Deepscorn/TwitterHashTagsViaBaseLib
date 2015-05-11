@@ -1,0 +1,4 @@
+[submodule "libraries/base-library"]
+	path = libraries/base-library
+	url = git@github.com:seva-ask/base-library.git
+	branch = newTechnologies

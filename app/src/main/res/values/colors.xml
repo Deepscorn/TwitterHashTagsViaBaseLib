@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="new_tweets_background">#767676</color>
+    <color name="list_background">#252626</color>
+    <color name="tweet_background">#262727</color>
+    <color name="tabs_background">#393a3a</color>
+    <color name="tab_divider">#e3e3e3</color>
+    <color name="white">#ffffff</color>
+    <color name="list_item_color">#898989</color>
+    <color name="blue">#2789ae</color>
+    <color name="border_line_color">#33b5e5</color>
+    <color name="touch_instinct_text_color">#50555a</color>
+    <color name="border_between_items">#3a3a3a</color>
+</resources>

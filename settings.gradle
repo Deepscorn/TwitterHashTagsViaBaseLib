@@ -1,0 +1,2 @@
+include ':app', ':mylibrary'
+include ':libraries:base-library:base-library'
