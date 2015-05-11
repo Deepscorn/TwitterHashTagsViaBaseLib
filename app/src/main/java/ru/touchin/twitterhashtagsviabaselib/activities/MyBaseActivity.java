@@ -1,4 +1,4 @@
-package ru.touchin.mylibrary.activities;
+package ru.touchin.twitterhashtagsviabaselib.activities;
 
 import android.support.v7.widget.Toolbar;
 

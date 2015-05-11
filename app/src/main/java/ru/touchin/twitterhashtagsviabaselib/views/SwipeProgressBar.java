@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package ru.touchin.mylibrary.views;
+package ru.touchin.twitterhashtagsviabaselib.views;
  
 import android.graphics.Canvas;
 import android.graphics.Paint;

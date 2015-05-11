@@ -1,8 +1,6 @@
-package ru.touchin.mylibrary.fragments.base;
+package ru.touchin.twitterhashtagsviabaselib.fragments;
 
 import android.animation.LayoutTransition;
-import android.app.NotificationManager;
-import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,8 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;

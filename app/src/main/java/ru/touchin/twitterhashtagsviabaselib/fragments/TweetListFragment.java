@@ -1,4 +1,4 @@
-package ru.touchin.mylibrary.fragments.base;
+package ru.touchin.twitterhashtagsviabaselib.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

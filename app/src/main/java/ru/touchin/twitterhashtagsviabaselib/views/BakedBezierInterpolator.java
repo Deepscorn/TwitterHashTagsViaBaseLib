@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package ru.touchin.mylibrary.views;
+package ru.touchin.twitterhashtagsviabaselib.views;
  
 import android.view.animation.Interpolator;
 

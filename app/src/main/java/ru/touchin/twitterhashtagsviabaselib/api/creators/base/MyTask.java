@@ -1,4 +1,4 @@
-package ru.touchin.mylibrary.api.creators;
+package ru.touchin.twitterhashtagsviabaselib.api.creators.base;
 
 import org.zuzuk.tasks.aggregationtask.AggregationTaskStageState;
 import org.zuzuk.tasks.aggregationtask.RequestAndTaskExecutor;

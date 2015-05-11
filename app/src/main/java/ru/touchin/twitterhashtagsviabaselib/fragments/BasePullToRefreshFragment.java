@@ -1,4 +1,4 @@
-package ru.touchin.mylibrary.fragments.base;
+package ru.touchin.twitterhashtagsviabaselib.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,7 +8,7 @@ import org.zuzuk.tasks.aggregationtask.AggregationTaskStage;
 import org.zuzuk.tasks.aggregationtask.AggregationTaskStageState;
 import org.zuzuk.tasks.aggregationtask.RequestAndTaskExecutor;
 
-import ru.touchin.mylibrary.views.SwipeRefreshLayout;
+import ru.touchin.twitterhashtagsviabaselib.views.SwipeRefreshLayout;
 
 public abstract class BasePullToRefreshFragment extends BaseLoadingFragment {
 

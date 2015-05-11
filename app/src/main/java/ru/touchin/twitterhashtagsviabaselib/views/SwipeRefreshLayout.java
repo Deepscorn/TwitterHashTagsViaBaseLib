@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package ru.touchin.mylibrary.views;
+package ru.touchin.twitterhashtagsviabaselib.views;
  
 import android.content.Context;
 import android.content.res.Resources;
