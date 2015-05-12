@@ -15,7 +15,7 @@ import org.zuzuk.ui.adapters.ProviderAdapter;
 import ru.touchin.twitterhashtagsviabaselib.R;
 import ru.touchin.twitterhashtagsviabaselib.model.Tweet;
 
-public class TweetAdapter extends ProviderAdapter<Tweet, RequestPagingProvider<Tweet>> {
+public class TweetListAdapter extends ProviderAdapter<Tweet, RequestPagingProvider<Tweet>> {
 
     private static final int EMPTY_ITEM = 0;
     private static final int ITEM = 1;

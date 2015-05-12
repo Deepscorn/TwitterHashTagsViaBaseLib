@@ -1,29 +1,33 @@
 package ru.touchin.twitterhashtagsviabaselib.api.creators.base;
 
+import android.content.Context;
+
 import org.zuzuk.tasks.aggregationtask.AggregationTaskStageState;
 import org.zuzuk.tasks.aggregationtask.RequestAndTaskExecutor;
-import org.zuzuk.tasks.remote.base.RemoteRequest;
 
-import ru.touchin.mylibrary.api.RequestFailListener;
-import ru.touchin.mylibrary.api.RequestSuccessListener;
-import ru.touchin.mylibrary.api.creators.base.RemoteAggregationPagingTask;
+import ru.touchin.twitterhashtagsviabaselib.api.RequestFailListener;
+import ru.touchin.twitterhashtagsviabaselib.api.RequestSuccessListener;
+import ru.touchin.twitterhashtagsviabaselib.model.Tweets;
+import ru.touchin.twitterhashtagsviabaselib.requests.BaseTweetsRequest;
 
-/**
- * Created by Alex on 07.05.2015.
- */
+
 public class MyTask extends RemoteAggregationPagingTask {
+    private Context context;
+    private String hashTag;
 
-    protected MyTask(RequestFailListener requestFailListener, int offset, int limit) {
+    public MyTask(RequestFailListener requestFailListener, int offset, int limit, Context context, String hashTag) {
         super(requestFailListener, offset, limit);
+        this.context = context;
+        this.hashTag = hashTag;
     }
 
     @Override
     public void load(RequestAndTaskExecutor executor, AggregationTaskStageState currentTaskStageState) {
-        executor.executeRequest(new RemoteRequest<Object>(getLimit(), getOffset()) {
-        }, new RequestSuccessListener<Object>() {
+        executor.executeRequest(new BaseTweetsRequest(context, hashTag) {
+        }, new RequestSuccessListener<Tweets>() {
             @Override
-            public void onRequestSuccess(Object o) {
-                setPageItems(response.get);
+            public void onRequestSuccess(Tweets tweets) {
+                setPageItems(tweets.getTweets());
             }
         });
     }

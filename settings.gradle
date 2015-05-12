@@ -1,1 +1,2 @@
+include ':app'
 include ':libraries:base-library:base-library'

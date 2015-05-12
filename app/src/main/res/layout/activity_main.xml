@@ -1,20 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
 
-    <ru.touchin.twitterhashtagsviabaselib.layouts.SlidingTabLayout
-        android:id="@+id/sliding_tabs"
+    <android.support.v7.widget.Toolbar
+        style="@style/ToolbarStyle"
+        app:theme="@style/ToolbarOverlayStyle"
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/tabs_background" />
+        android:layout_height="wrap_content" />
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer"
         android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:layout_weight="1"
-        android:background="@android:color/white" />
+        android:layout_height="match_parent" >
+
+        <FrameLayout
+            android:id="@+id/mainFragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:orientation="vertical"
+            android:background="@color/background"
+            android:clickable="true">
+
+            <org.zuzuk.ui.views.hacked.CustomListView
+                android:id="@+id/fragmentList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@color/divider"
+                android:dividerHeight="1dp" />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.DrawerLayout>
 
 </LinearLayout>

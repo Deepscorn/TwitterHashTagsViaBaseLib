@@ -14,4 +14,6 @@
     <string name="order">Ordering an application</string>
     <string name="email">hello@touchin.ru</string>
 
+    <string name="android_base_fragment_title" formatted="false">HashTweets</string>
+
 </resources>

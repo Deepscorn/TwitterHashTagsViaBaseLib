@@ -12,4 +12,16 @@
         <item name="background">@color/tabs_background</item>
     </style>
 
+    <style name="ToolbarStyle" parent="Widget.AppCompat.Toolbar">
+        <item name="android:textColorPrimary">@color/sundance</item>
+        <item name="android:background">@color/ab_background</item>
+    </style>
+
+    <style name="ToolbarOverlayStyle" parent="">
+        <item name="actionMenuTextColor">@color/sundance</item>
+        <item name="android:actionMenuTextColor">@color/sundance</item>
+        <item name="android:textColorPrimary">@color/sundance</item>
+        <item name="colorControlNormal">@color/sundance</item>
+    </style>
+
 </resources>

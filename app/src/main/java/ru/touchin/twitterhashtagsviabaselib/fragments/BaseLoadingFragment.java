@@ -9,6 +9,8 @@ import org.zuzuk.tasks.aggregationtask.AggregationTaskStage;
 import org.zuzuk.tasks.aggregationtask.AggregationTaskStageState;
 import org.zuzuk.tasks.aggregationtask.RequestAndTaskExecutor;
 
+import ru.touchin.twitterhashtagsviabaselib.R;
+
 public abstract class BaseLoadingFragment extends BaseLoadedFragment implements AggregationTask {
 
     private boolean fragmentDataLoaded = false;

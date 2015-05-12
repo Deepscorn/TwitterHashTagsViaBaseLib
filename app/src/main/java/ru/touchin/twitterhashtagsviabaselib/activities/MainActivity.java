@@ -10,7 +10,8 @@ import org.zuzuk.utils.Lc;
 
 import java.util.List;
 
-import ru.touchin.mylibrary.api.RequestFailListener;
+import ru.touchin.twitterhashtagsviabaselib.R;
+import ru.touchin.twitterhashtagsviabaselib.api.RequestFailListener;
 import ru.touchin.twitterhashtagsviabaselib.fragments.BaseLoadedFragment;
 import ru.touchin.twitterhashtagsviabaselib.fragments.TweetListFragment;
 

@@ -1,7 +1,6 @@
 package ru.touchin.twitterhashtagsviabaselib;
 
 import android.app.Application;
-import android.content.Intent;
 import android.os.StrictMode;
 import android.util.Log;
 
@@ -21,7 +20,7 @@ public class App extends Application implements TaskExecutorHelperCreator {
 
     @Override
     public TaskExecutorHelper createTaskExecutorHelper() {
-        return new TaskExecutorHelper(){
+        return new TaskExecutorHelper() {
             @Override
             protected RequestAndTaskExecutor createRequestAndTaskExecutor() {
                 return new RequestAndTaskExecutor();
@@ -45,7 +44,7 @@ public class App extends Application implements TaskExecutorHelperCreator {
             Lc.initialize(Log.DEBUG);
             Lc.setRobospiceLogLevel(Log.ERROR);
         } else {
-          //  Fabric.with(this, new Crashlytics());
+            //  Fabric.with(this, new Crashlytics());
             Lc.initialize(Log.ERROR);
         }
 

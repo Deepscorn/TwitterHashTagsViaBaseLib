@@ -10,34 +10,35 @@ import org.zuzuk.providers.RequestPagingProvider;
 import org.zuzuk.tasks.aggregationtask.AggregationTaskStageState;
 import org.zuzuk.tasks.aggregationtask.RequestAndTaskExecutor;
 
-import ru.touchin.mylibrary.api.creators.MyTaskCreator;
+import ru.touchin.twitterhashtagsviabaselib.R;
+import ru.touchin.twitterhashtagsviabaselib.adapters.TweetListAdapter;
+import ru.touchin.twitterhashtagsviabaselib.api.creators.base.MyTaskCreator;
+import ru.touchin.twitterhashtagsviabaselib.model.Tweet;
 
-/**
- * Created by Alex on 07.05.2015.
- */
+
 public class TweetListFragment extends BaseListViewFragment {
 
-    private RequestPagingProvider<Tweet> guildListProvider;
+    private RequestPagingProvider<Tweet> tweetListProvider;
 
-    private GuildListAdapter adapter;
+    private TweetListAdapter adapter;
 
     @Override
     protected void onCreateRenewable() {
         super.onCreateRenewable();
-        guildListProvider = new RequestPagingProvider<>(this, new MyTaskCreator(this));
+        tweetListProvider = new RequestPagingProvider<>(this, new MyTaskCreator(this, getActivity().getApplicationContext(), "Twitter"));
     }
 
     @Override
     protected void onDestroyRenewable() {
         super.onDestroyRenewable();
-        guildListProvider = null;
+        tweetListProvider = null;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        adapter = new GuildListAdapter();
-        adapter.setProvider(guildListProvider);
+        adapter = new TweetListAdapter();
+        adapter.setProvider(tweetListProvider);
     }
 
 
@@ -47,19 +48,19 @@ public class TweetListFragment extends BaseListViewFragment {
         adapter = null;
     }
 
-        @Override
+    @Override
     protected void loadFragmentData(RequestAndTaskExecutor executor, AggregationTaskStageState currentTaskStageState) {
-            guildListProvider.initialize(getListPosition(), executor);
+        tweetListProvider.initialize(getListPosition(), executor);
     }
 
     @Override
     protected View createContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_guild_list, container, false);
+        return inflater.inflate(R.layout.fragment_tweet_list, container, false);
     }
 
-    @Override
-    protected void onItemClick(int position) {
-        super.onItemClick(position);
-        pushFragment(TweetFragment.class, TweetFragment.createArgs());
-    }
+//    @Override
+//    protected void onItemClick(int position) {
+//        super.onItemClick(position);
+//        pushFragment(TweetFragment.class, TweetFragment.createArgs());
+//    }
 }

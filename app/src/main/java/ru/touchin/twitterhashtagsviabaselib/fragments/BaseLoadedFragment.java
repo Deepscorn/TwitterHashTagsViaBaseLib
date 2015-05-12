@@ -1,7 +1,6 @@
 package ru.touchin.twitterhashtagsviabaselib.fragments;
 
 import android.animation.LayoutTransition;
-import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,14 +14,14 @@ import android.widget.FrameLayout;
 
 import org.zuzuk.tasks.aggregationtask.AggregationTaskStageState;
 import org.zuzuk.tasks.realloading.RealLoadingAggregationTaskListener;
-import org.zuzuk.ui.UIUtils;
 import org.zuzuk.ui.fragments.BaseExecutorFragment;
-import org.zuzuk.ui.views.typefaces.Typefaces;
 
 import java.util.List;
 
-import ru.touchin.mylibrary.activities.MainActivity;
-import ru.touchin.mylibrary.api.RequestFailListener;
+import ru.touchin.twitterhashtagsviabaselib.R;
+import ru.touchin.twitterhashtagsviabaselib.activities.MainActivity;
+import ru.touchin.twitterhashtagsviabaselib.api.RequestFailListener;
+
 
 public abstract class BaseLoadedFragment extends BaseExecutorFragment implements RequestFailListener {
     private static final String CURRENT_FOCUS_ID_STATE = "CURRENT_FOCUS_ID_STATE";
@@ -70,6 +69,7 @@ public abstract class BaseLoadedFragment extends BaseExecutorFragment implements
     public void configureActionBar() {
         super.configureActionBar();
         getActivity().findViewById(R.id.toolbar).setVisibility(isActionBarVisible() ? View.VISIBLE : View.GONE);
+
     }
 
     public boolean isHomeButtonVisible() {
@@ -83,17 +83,17 @@ public abstract class BaseLoadedFragment extends BaseExecutorFragment implements
     @Override
     public CharSequence getTitle() {
         int titleResourceId = getTitleResourceId();
-        return wrapActionBarText(getString(titleResourceId > 0 ? titleResourceId : R.string.android_base_fragment_title));
+        return getString(titleResourceId > 0 ? titleResourceId : R.string.android_base_fragment_title);
     }
 
     public int getTitleResourceId() {
         return 0;
     }
 
-    protected CharSequence wrapActionBarText(String text) {
-        Typeface actionBarTypeface = Typefaces.getByName(getActivity(), "BeaufortforLOL-Regular");
-        return UIUtils.wrapTextWithTypeface(getActivity(), text, actionBarTypeface);
-    }
+//    protected CharSequence wrapActionBarText(String text) {
+//        Typeface actionBarTypeface = Typefaces.getByName(getActivity(), "BeaufortforLOL-Regular");
+//        return UIUtils.wrapTextWithTypeface(getActivity(), text, actionBarTypeface);
+//    }
 
     protected MainActivity getMainActivity() {
         return (MainActivity) getActivity();
@@ -128,9 +128,9 @@ public abstract class BaseLoadedFragment extends BaseExecutorFragment implements
             frameLayout.setLayoutTransition(layoutTransition);
         }
 
-        if(shouldRestoreFocus() && savedInstanceState != null){
+        if (shouldRestoreFocus() && savedInstanceState != null) {
             int currentFocusId = savedInstanceState.getInt(CURRENT_FOCUS_ID_STATE, View.NO_ID);
-            if(currentFocusId != View.NO_ID){
+            if (currentFocusId != View.NO_ID) {
                 currentFocusView = findViewById(currentFocusId);
                 showSoftInputIfNeeded();
             }
@@ -187,10 +187,10 @@ public abstract class BaseLoadedFragment extends BaseExecutorFragment implements
         getMainActivity().onRequestFailure(exceptionList);
     }
 
-    private void showSoftInputIfNeeded(){
-        if(currentFocusView != null
-            && currentFocusView.getId() != R.id.topContainer
-            && currentFocusView instanceof EditText){
+    private void showSoftInputIfNeeded() {
+        if (currentFocusView != null
+                && currentFocusView.getId() != R.id.topContainer
+                && currentFocusView instanceof EditText) {
             postRequestFocus();
         }
     }
@@ -249,7 +249,7 @@ public abstract class BaseLoadedFragment extends BaseExecutorFragment implements
     public Fragment replaceCurrFragment(Class fragmentClass, Bundle args) {
         FragmentManager fragmentManager = getMainActivity().getSupportFragmentManager();
 
-        if(0 < fragmentManager.getBackStackEntryCount()) {
+        if (0 < fragmentManager.getBackStackEntryCount()) {
             popBackStack();
             return setFragment(fragmentClass, args);
         } else {
@@ -257,14 +257,14 @@ public abstract class BaseLoadedFragment extends BaseExecutorFragment implements
         }
     }
 
-    public void popBackStack(){
+    public void popBackStack() {
         getMainActivity().getSupportFragmentManager().popBackStack();
     }
 
-    public void popBackStackWithInvalidate(){
-        if(getTargetFragment() != null
-                && getTargetFragment() instanceof BaseLoadingFragment){
-            ((BaseLoadingFragment)getTargetFragment()).setNeedInvalidating();
+    public void popBackStackWithInvalidate() {
+        if (getTargetFragment() != null
+                && getTargetFragment() instanceof BaseLoadingFragment) {
+            ((BaseLoadingFragment) getTargetFragment()).setNeedInvalidating();
         }
         getMainActivity().getSupportFragmentManager().popBackStack();
     }

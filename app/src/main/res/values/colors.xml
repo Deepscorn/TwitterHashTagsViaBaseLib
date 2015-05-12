@@ -11,4 +11,9 @@
     <color name="border_line_color">#33b5e5</color>
     <color name="touch_instinct_text_color">#50555a</color>
     <color name="border_between_items">#3a3a3a</color>
+    <color name="cape_palliser">#93743d</color>
+    <color name="sundance">#cbac62</color>
+    <color name="divider">#364e52</color>
+    <color name="background">#022227</color>
+    <color name="ab_background">#011113</color>
 </resources>

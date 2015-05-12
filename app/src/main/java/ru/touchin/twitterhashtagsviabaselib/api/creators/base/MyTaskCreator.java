@@ -1,21 +1,24 @@
 package ru.touchin.twitterhashtagsviabaselib.api.creators.base;
 
+import android.content.Context;
+
 import org.zuzuk.tasks.aggregationtask.AggregationPagingTask;
 
-import ru.touchin.mylibrary.api.RequestFailListener;
-import ru.touchin.mylibrary.api.creators.base.RemoteAggregationPagingTaskCreator;
+import ru.touchin.twitterhashtagsviabaselib.api.RequestFailListener;
 
-/**
- * Created by Alex on 07.05.2015.
- */
+
 public class MyTaskCreator extends RemoteAggregationPagingTaskCreator {
+    private Context context;
+    private String hashTag;
 
-    protected MyTaskCreator(RequestFailListener requestFailListener) {
+    public MyTaskCreator(RequestFailListener requestFailListener, Context context, String hashTag) {
         super(requestFailListener);
+        this.context = context;
+        this.hashTag = hashTag;
     }
 
     @Override
     public AggregationPagingTask createPagingTask(int offset, int limit) {
-        return new MyTask();
+        return new MyTask(getRequestFailListener(), offset, limit, context, hashTag);
     }
 }
