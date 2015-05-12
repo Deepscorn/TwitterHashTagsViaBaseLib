@@ -16,11 +16,13 @@ public class BaseTweetsRequest extends GetJsonRequest<Tweets> {
     public static final String ADDRESS = "https://api.twitter.com/1.1/search/tweets.json";
     private Context context;
     private String hashTag;
+    private int limit;
 
-    public BaseTweetsRequest(Context context, String hashTag) {
+    public BaseTweetsRequest(Context context, String hashTag, int limit) {
         super(Tweets.class);
         this.context = context;
         this.hashTag = hashTag;
+        this.limit = limit;
     }
 
     @Override
@@ -31,7 +33,7 @@ public class BaseTweetsRequest extends GetJsonRequest<Tweets> {
     @Override
     protected void setupUrlParameters(GenericUrl url) {
         url.put("q", "%23" + hashTag);
-        url.put("count", 10);
+        url.put("count", limit);
     }
 
     @Override

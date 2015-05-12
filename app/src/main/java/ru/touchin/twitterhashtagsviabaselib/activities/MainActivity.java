@@ -13,7 +13,7 @@ import java.util.List;
 import ru.touchin.twitterhashtagsviabaselib.R;
 import ru.touchin.twitterhashtagsviabaselib.api.RequestFailListener;
 import ru.touchin.twitterhashtagsviabaselib.fragments.BaseLoadedFragment;
-import ru.touchin.twitterhashtagsviabaselib.fragments.TweetListFragment;
+import ru.touchin.twitterhashtagsviabaselib.fragments.TweetTabFragment;
 
 public class MainActivity extends MyBaseActivity implements RequestFailListener, RealLoadingAggregationTaskListener {
 
@@ -25,7 +25,7 @@ public class MainActivity extends MyBaseActivity implements RequestFailListener,
         setContentView(R.layout.activity_main);
         setupActionBar();
         if (savedInstanceState == null) {
-            setFirstFragment(TweetListFragment.class);
+            setFirstFragment(TweetTabFragment.class);
         }
     }
 
@@ -91,5 +91,4 @@ public class MainActivity extends MyBaseActivity implements RequestFailListener,
     public void onRealFailed(AggregationTaskStageState currentTaskStageState) {
         onRequestFailure(currentTaskStageState.getExceptions());
     }
-
 }

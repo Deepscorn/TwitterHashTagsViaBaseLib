@@ -65,12 +65,12 @@ public abstract class BaseLoadedFragment extends BaseExecutorFragment implements
         }
     };
 
-    @Override
-    public void configureActionBar() {
-        super.configureActionBar();
-        getActivity().findViewById(R.id.toolbar).setVisibility(isActionBarVisible() ? View.VISIBLE : View.GONE);
-
-    }
+//    @Override
+//    public void configureActionBar() {
+//        super.configureActionBar();
+//        getActivity().findViewById(R.id.toolbar).setVisibility(isActionBarVisible() ? View.VISIBLE : View.GONE);
+//
+//    }
 
     public boolean isHomeButtonVisible() {
         return true;

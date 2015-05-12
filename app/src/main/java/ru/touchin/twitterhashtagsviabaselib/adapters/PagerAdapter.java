@@ -6,8 +6,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import ru.touchin.twitterhashtagsviabaselib.R;
+import ru.touchin.twitterhashtagsviabaselib.fragments.TweetListFragment;
 
-public abstract class PagerAdapter extends FragmentPagerAdapter {
+public class PagerAdapter extends FragmentPagerAdapter {
     final int PAGE_COUNT = 3;
     private String[] tabTitles;
 
@@ -24,10 +25,10 @@ public abstract class PagerAdapter extends FragmentPagerAdapter {
         return PAGE_COUNT;
     }
 
-//    @Override
-//    public Fragment getItem(int position) {
-//        return HashTagFragment.newInstance(position + 1);
-//    }
+    @Override
+    public Fragment getItem(int position) {
+        return TweetListFragment.newInstance(position + 1);
+    }
 
     @Override
     public CharSequence getPageTitle(int position) {
