@@ -3,17 +3,29 @@ package ru.touchin.twitterhashtagsviabaselib.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import org.zuzuk.ui.fragments.BaseFragment;
 
 import ru.touchin.twitterhashtagsviabaselib.R;
 import ru.touchin.twitterhashtagsviabaselib.adapters.PagerAdapter;
 import ru.touchin.twitterhashtagsviabaselib.layouts.SlidingTabLayout;
 
 public class TweetTabFragment extends BaseLoadedFragment {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void configureActionBar() {
+        ((ActionBarActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+    }
 
     @Override
     protected View createContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -30,5 +42,11 @@ public class TweetTabFragment extends BaseLoadedFragment {
 
         slidingTabLayout.setDistributeEvenly(true);
         slidingTabLayout.setViewPager(viewPager);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_main, menu);
     }
 }
