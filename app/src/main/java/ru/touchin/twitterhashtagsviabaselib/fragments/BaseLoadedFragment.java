@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,13 +65,6 @@ public abstract class BaseLoadedFragment extends BaseExecutorFragment implements
             onRequestFailure(currentTaskStageState.getExceptions());
         }
     };
-
-//    @Override
-//    public void configureActionBar() {
-//        super.configureActionBar();
-//        getActivity().findViewById(R.id.toolbar).setVisibility(isActionBarVisible() ? View.VISIBLE : View.GONE);
-//
-//    }
 
     public boolean isHomeButtonVisible() {
         return true;

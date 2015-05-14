@@ -15,18 +15,17 @@ import ru.touchin.twitterhashtagsviabaselib.R;
 import ru.touchin.twitterhashtagsviabaselib.adapters.TweetListAdapter;
 import ru.touchin.twitterhashtagsviabaselib.api.creators.base.TweetTaskCreator;
 import ru.touchin.twitterhashtagsviabaselib.model.Tweet;
-import ru.touchin.twitterhashtagsviabaselib.utils.TwitterUtils;
 
 
 public class TweetListFragment extends BaseListViewFragment {
     public static final String ARG_PAGE = "ARG_PAGE";
-    private int mPage;
+    private String hashTag;
     private RequestPagingProvider<Tweet> tweetListProvider;
     private TweetListAdapter adapter;
 
-    public static TweetListFragment newInstance(int page) {
+    public static TweetListFragment newInstance(String hashTag) {
         Bundle args = new Bundle();
-        args.putInt(ARG_PAGE, page);
+        args.putString(ARG_PAGE, hashTag);
         TweetListFragment fragment = new TweetListFragment();
         fragment.setArguments(args);
         return fragment;
@@ -35,13 +34,13 @@ public class TweetListFragment extends BaseListViewFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPage = getArguments().getInt(ARG_PAGE);
+        hashTag = getArguments().getString(ARG_PAGE);
     }
 
     @Override
     protected void onCreateRenewable() {
         super.onCreateRenewable();
-        tweetListProvider = new RequestPagingProvider<>(this, new TweetTaskCreator(this, getActivity(), TwitterUtils.getHashTag(mPage, getActivity())));
+        tweetListProvider = new RequestPagingProvider<>(this, new TweetTaskCreator(this, getActivity(), hashTag));
     }
 
     @Override

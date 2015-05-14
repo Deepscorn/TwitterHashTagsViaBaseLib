@@ -27,7 +27,7 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return TweetListFragment.newInstance(position + 1);
+        return TweetListFragment.newInstance(tabTitles[position]);
     }
 
     @Override

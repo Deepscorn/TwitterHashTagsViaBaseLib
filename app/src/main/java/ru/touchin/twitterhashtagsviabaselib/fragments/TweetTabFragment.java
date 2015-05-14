@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -20,11 +21,6 @@ public class TweetTabFragment extends BaseLoadedFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-    }
-
-    @Override
-    public void configureActionBar() {
-        ((ActionBarActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     @Override
@@ -48,5 +44,18 @@ public class TweetTabFragment extends BaseLoadedFragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_main, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.about_us_item) {
+            pushFragment(InfoFragment.class);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean isHomeButtonVisible() {
+        return false;
     }
 }

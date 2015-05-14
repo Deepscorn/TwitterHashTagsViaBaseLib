@@ -1,14 +1,9 @@
 package ru.touchin.twitterhashtagsviabaselib.activities;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import org.zuzuk.tasks.aggregationtask.AggregationTaskStageState;
-import org.zuzuk.tasks.realloading.RealLoadingAggregationTaskListener;
 import org.zuzuk.ui.fragments.BaseFragment;
 import org.zuzuk.utils.Lc;
 
@@ -17,10 +12,9 @@ import java.util.List;
 import ru.touchin.twitterhashtagsviabaselib.R;
 import ru.touchin.twitterhashtagsviabaselib.api.RequestFailListener;
 import ru.touchin.twitterhashtagsviabaselib.fragments.BaseLoadedFragment;
-import ru.touchin.twitterhashtagsviabaselib.fragments.InfoFragment;
 import ru.touchin.twitterhashtagsviabaselib.fragments.TweetTabFragment;
 
-public class MainActivity extends MyBaseActivity implements RequestFailListener, RealLoadingAggregationTaskListener {
+public class MainActivity extends MyBaseActivity implements RequestFailListener {
 
     private BaseLoadedFragment currentFragment;
 
@@ -32,10 +26,22 @@ public class MainActivity extends MyBaseActivity implements RequestFailListener,
         if (savedInstanceState == null) {
             setFirstFragment(TweetTabFragment.class);
         }
+        getSupportActionBar().setElevation(0);
     }
 
     private void updateActionBarState() {
-        currentFragment.configureActionBar();
+        boolean homeButtonVisible = currentFragment == null || currentFragment.isHomeButtonVisible();
+        boolean enabled = isCurrentFragmentTop() && homeButtonVisible;
+        if (currentFragment != null) {
+            currentFragment.configureActionBar();
+        }
+
+        if (!enabled) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            if (!homeButtonVisible) {
+                getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            }
+        }
     }
 
     @Override
@@ -75,31 +81,11 @@ public class MainActivity extends MyBaseActivity implements RequestFailListener,
     }
 
     @Override
-    public void onRealLoadingStarted(AggregationTaskStageState currentTaskStageState) {
-    }
-
-    @Override
-    public void onRealLoaded(AggregationTaskStageState currentTaskStageState) {
-    }
-
-    @Override
-    public void onRealFailed(AggregationTaskStageState currentTaskStageState) {
-        onRequestFailure(currentTaskStageState.getExceptions());
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                FragmentManager fm = getSupportFragmentManager();
-                if (fm.getBackStackEntryCount() > 0) {
-                    fm.popBackStack();
-                }
-                return true;
-            case R.id.about_us_item:
-                pushFragment(InfoFragment.class);
+        if (item.getItemId() == android.R.id.home) {
+            upButtonClicked();
+            return true;
         }
-
-        return true;
+        return false;
     }
 }
