@@ -16,7 +16,7 @@
         android:paddingLeft="34.3965dp"
         android:paddingTop="40.2165dp">
 
-        <ImageView
+        <ru.touchin.twitterhashtagsviabaselib.views.RoundedLoadingImageView
             android:id="@+id/profile_image_full"
             android:layout_width="67.734dp"
             android:layout_height="67.734dp" />

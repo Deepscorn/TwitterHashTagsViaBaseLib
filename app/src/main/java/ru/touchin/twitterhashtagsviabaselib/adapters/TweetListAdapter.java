@@ -1,13 +1,12 @@
 package ru.touchin.twitterhashtagsviabaselib.adapters;
 
+import android.net.Uri;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
 
 import ru.touchin.twitterhashtagsviabaselib.R;
 import ru.touchin.twitterhashtagsviabaselib.model.Tweet;
+import ru.touchin.twitterhashtagsviabaselib.views.RoundedLoadingImageView;
 
 public class TweetListAdapter extends BaseAdapter<Tweet> {
 
@@ -36,9 +35,10 @@ public class TweetListAdapter extends BaseAdapter<Tweet> {
 
     @Override
     public void fillItem(View view, Tweet tweet) {
-        ImageView profileImage = (ImageView) view.findViewById(R.id.profile_image_normal);
+        RoundedLoadingImageView profileImage = (RoundedLoadingImageView) view.findViewById(R.id.profile_image_normal);
+        Uri uri = Uri.parse(tweet.getUser().getNormalSizeImageURL());
+        profileImage.setImageURI(uri);
 
-        Picasso.with(view.getContext()).load(tweet.getUser().getNormalSizeImageURL()).into(profileImage);
         ((TextView) view.findViewById(R.id.user_name_item)).setText(tweet.getUser().getName());
         ((TextView) view.findViewById(R.id.tweet_item)).setText(tweet.toString());
     }

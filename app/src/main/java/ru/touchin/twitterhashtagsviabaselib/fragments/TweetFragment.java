@@ -1,20 +1,18 @@
 package ru.touchin.twitterhashtagsviabaselib.fragments;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
 
 import ru.touchin.twitterhashtagsviabaselib.R;
 import ru.touchin.twitterhashtagsviabaselib.model.Tweet;
+import ru.touchin.twitterhashtagsviabaselib.views.RoundedLoadingImageView;
 
 public class TweetFragment extends BaseLoadedFragment {
     public static final String TWEET = "tweet";
@@ -44,7 +42,8 @@ public class TweetFragment extends BaseLoadedFragment {
         link.setMovementMethod(LinkMovementMethod.getInstance());
         link.setText(Html.fromHtml(tweet.getLink()));
 
-        ImageView imageView = findViewById(R.id.profile_image_full);
-        Picasso.with(getActivity()).load(tweet.getUser().getFullSizeImageURL()).into(imageView);
+        RoundedLoadingImageView profileImage = findViewById(R.id.profile_image_full);
+        Uri uri = Uri.parse(tweet.getUser().getFullSizeImageURL());
+        profileImage.setImageURI(uri);
     }
 }
