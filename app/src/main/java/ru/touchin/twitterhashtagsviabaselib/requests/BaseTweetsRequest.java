@@ -38,7 +38,7 @@ public class BaseTweetsRequest extends GetJsonRequest<Tweets> {
 
     @Override
     protected Request.Builder createHttpRequest() throws IOException {
-        String auth = "Bearer " + context.getString(R.string.access_token);
+        String auth = "Bearer ";// + context.getString(R.string.access_token);
         return super.createHttpRequest().header("Authorization", auth);
     }
 }

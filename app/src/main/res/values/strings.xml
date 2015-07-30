@@ -15,5 +15,8 @@
     <string name="email">hello@touchin.ru</string>
 
     <string name="android_base_fragment_title" formatted="false">HashTweets</string>
+    <string name="title_activity_my">MyActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 </resources>
