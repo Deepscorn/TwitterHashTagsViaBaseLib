@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +14,12 @@ import android.widget.FrameLayout;
 
 import org.zuzuk.tasks.aggregationtask.AggregationTaskStageState;
 import org.zuzuk.tasks.realloading.RealLoadingAggregationTaskListener;
+import org.zuzuk.ui.activities.BaseActivity;
 import org.zuzuk.ui.fragments.BaseExecutorFragment;
 
 import java.util.List;
 
 import ru.touchin.twitterhashtagsviabaselib.R;
-import ru.touchin.twitterhashtagsviabaselib.activities.MainActivity;
 import ru.touchin.twitterhashtagsviabaselib.api.RequestFailListener;
 
 
@@ -89,8 +88,8 @@ public abstract class BaseLoadedFragment extends BaseExecutorFragment implements
 //        return UIUtils.wrapTextWithTypeface(getActivity(), text, actionBarTypeface);
 //    }
 
-    protected MainActivity getMainActivity() {
-        return (MainActivity) getActivity();
+    protected BaseActivity getMainActivity() {
+        return (BaseActivity) getActivity();
     }
 
     protected abstract View createContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState);
@@ -178,7 +177,8 @@ public abstract class BaseLoadedFragment extends BaseExecutorFragment implements
 
     @Override
     public void onRequestFailure(List<Exception> exceptionList) {
-        getMainActivity().onRequestFailure(exceptionList);
+        // todo: this is implicit logic, should make explicit
+        ((RequestFailListener)getMainActivity()).onRequestFailure(exceptionList);
     }
 
     private void showSoftInputIfNeeded() {

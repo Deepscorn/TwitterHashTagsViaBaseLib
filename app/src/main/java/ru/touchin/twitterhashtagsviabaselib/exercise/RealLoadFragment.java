@@ -1,4 +1,4 @@
-package ru.touchin.twitterhashtagsviabaselib.activities;
+package ru.touchin.twitterhashtagsviabaselib.exercise;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -22,9 +22,9 @@ import ru.touchin.twitterhashtagsviabaselib.exercise.LayoutsPOJO;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MyActivityFragment extends BaseExecutorFragment {
+public class RealLoadFragment extends BaseExecutorFragment {
 
-    public static final String LOG_TAG = "MyActivityFragment";
+    public static final String LOG_TAG = "RealLoadFragment";
 
     @Override
     protected View onCreateViewInternal(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -63,6 +63,4 @@ public class MyActivityFragment extends BaseExecutorFragment {
         Log.d(LOG_TAG, e.toString());
         Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
     }
-
-
 }

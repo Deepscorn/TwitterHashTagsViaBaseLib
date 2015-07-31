@@ -1,9 +1,7 @@
 package ru.touchin.twitterhashtagsviabaselib.exercise;
 
-import android.app.Application;
 import android.os.SystemClock;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.api.client.util.Key;
 
@@ -12,9 +10,7 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.zuzuk.tasks.remote.GetJsonRequest;
 
 import java.util.ArrayList;
-
-import ru.touchin.twitterhashtagsviabaselib.App;
-import ru.touchin.twitterhashtagsviabaselib.activities.MyActivityFragment;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class LayoutsPOJO {
     @Key
@@ -54,6 +50,7 @@ public class LayoutsPOJO {
 
         public Request(String platform) {
             super(LayoutsPOJO.class);
+            Log.d(Util.LOG_TAG, "new Request("+platform+")");
             if(StringUtils.isEmpty(platform))
                 throw(new IllegalArgumentException("platform is empty"));
             this.platform = platform;
@@ -64,10 +61,13 @@ public class LayoutsPOJO {
             return "https://api2-mock.4game.com/ui-settings/layout/"+platform;
         }
 
+        static AtomicInteger number = new AtomicInteger(0);
+        private int curNumber = number.getAndIncrement();
+
         @Override
         public LayoutsPOJO loadDataFromNetwork() throws Exception {
             for (int i = 0; i < 5; ++i) {
-                Log.d(MyActivityFragment.LOG_TAG, "layouts load in " + i);
+                Log.d(Util.LOG_TAG, "layouts download... " + i + " #"+curNumber);
                 long start = SystemClock.uptimeMillis();
                 while(SystemClock.uptimeMillis() - start < 2010) {}
             }
